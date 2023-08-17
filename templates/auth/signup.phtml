@@ -1,0 +1,46 @@
+<div class="auth_block">
+    <h3 class='auth_header'>Registration</h3>
+
+    <form class="form" action="" method="POST">
+
+        
+        <label tittle="Required field" class="form_label" for="login">Login*:</label>
+        <input class="form_input" type="text" id="login" name="login" placeholder="Alex123">
+
+        <label tittle="Required field" class="form_label" for="email">Email*:</label>
+        <input class="form_input" type="text" id="email" name="email" placeholder="alex.smith@mail.com">
+
+        <label tittle="Required field. More than 5 characters" class="form_label" for="password">Password*:</label>
+        <input class="form_input" type="password" id="password" name="password">
+
+        <label tittle="Required field. More than 5 characters" class="form_label" for="password_confirm">Confirm Password*:</label>
+        <input class="form_input" type="password" id="password_confirm" name="password_confirm">
+
+        <div class="password_visibility_select">
+            <input class="checkbox" type="checkbox" id="password_checkbox" onchange="toggle_password_visibility()">
+            <label class="form_label password_checkbox_label" for="password_checkbox">Show password</label>
+        </div>
+
+        <label class="form_label" for="user_name">Name:</label>
+        <input class="form_input" type="text" id="user_name" name="user_name" placeholder="Alex">
+
+        <label class="form_label" for="user_surname">Surname:</label>
+        <input class="form_input" type="text" id="user_surname" name="user_surname" placeholder="Smith">
+
+        <label class="form_label" for="country">Country:</label>
+        <input class="form_input" type="text" id="country" name="country" placeholder="USA">
+
+        <label class="form_label" for="slogan">Slogan:</label>
+        <input class="form_input" type="text" id="slogan" name="slogan" placeholder="All by myself">
+
+        <div class="form_confirm">
+            <input class="checkbox" type="checkbox" checked id="checkbox" value="" name="checkbox"/> 
+            <label class="form_label" for="checkbox">Сonsent to the processing of personal data</label>
+        </div>
+
+        <div class="form_action">
+            <button class="button form_button" type="reset">Clear</button>
+            <button id="register" class="button form_button" type="submit">Register</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,31 @@
+<img class="post_preview_img" src="img/mountains.jpeg" alt="post_preview_img">
+<div class="post_content">
+    <h4 class="post_name"><?= htmlspecialchars($post_name) ?></h4>
+    <div class="border"></div>
+    <div class="post_user_name_and_date_block">
+        <div class="post_name_block">
+            <p>from&nbsp;</p>
+            <p class="post_user_name"><?= htmlspecialchars($user_name) ?></p>
+        </div>
+        <p class="post_date"><?= htmlspecialchars($date_create) ?></p>
+    </div>
+    <p class="post_short_text">
+        <?= htmlspecialchars($post_text) ?>
+    </p>
+    <div class="post_interaction">
+        <div class="like_block">
+            <i class="material-symbols-outlined icon_line">favorite</i>
+            <span>&nbsp;</span>
+            <p class="like_counter">1</p>
+        </div>
+        <a class="button_revers button_class_for_width1024" href="">Read</a>
+    </div>
+    <div class="comment_block">
+        <p class="comment_text">Comments:&nbsp;</p>
+        <span class="comment_counter">1</span>
+    </div>
+    <div class="edit_block">
+        <a class="button_revers" href="<?= htmlspecialchars($post_id) ?>">Edit</a>
+        <a class="button_revers" href="<?= htmlspecialchars($post_id) ?>">Delete</a>
+    </div>
+</div>

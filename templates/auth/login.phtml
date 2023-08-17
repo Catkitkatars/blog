@@ -1,0 +1,22 @@
+<div class="auth_block">
+    <h3 class='auth_header'>Login</h3>
+
+    <form class="form form_login" action="" method="POST">
+
+        <label class="form_label" for="login">Login:</label>
+        <input class="form_input" type="text" id="login" name="login" placeholder="">
+
+        <label class="form_label" for="password">Password:</label>
+        <input class="form_input" type="password" id="password" name="password">
+
+        <div class="password_visibility_select">
+            <input class="checkbox" type="checkbox" id="password_checkbox" onchange="toggle_password_visibility()">
+            <label class="form_label password_checkbox_label" for="password_checkbox">Show password</label>
+        </div>
+
+        <div class="form_action">
+            <button class="button form_button" type="reset">Clear</button>
+            <button id="enter" class="button form_button" type="submit">Enter</button>
+        </div>
+    </form>
+</div>

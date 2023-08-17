@@ -1,0 +1,58 @@
+<div class="container">
+    <?= $header ?>
+    <main>
+        <h3 class='profile_name'>Your Profile</h3>
+        <?= $profile ?>
+        <div class="filter filter_and_add">
+            <div class="button button_filter">
+                <i class="material-symbols-outlined icon_fill">filter_alt</i>
+            </div>
+            <div class="add_post_round">
+                <i class="material-symbols-outlined icon_fill icon_filter">post_add</i>
+            </div>
+        </div>
+
+        <div class="filter_block block_hide">
+            <div class="filter_block_name">
+                <i class="material-symbols-outlined icon_fill filter_close_btn">close</i>
+                <h5 class="filter_name">Filter</h5>
+            </div>
+            <form class="filter_block_form" action="" method="POST">
+                <div class="filter_block_input_block">
+                    <input class="custom-radio" type="radio" checked id="last_added" value="last_added" name="added"/> 
+                    <label class="form_label" style="color: var(--blue-color);" for="last_added">Last added</label>
+                </div>
+                <div class="filter_block_input_block">
+                    <input class="custom-radio" type="radio"  id="first_added" value="first_added" name="added"/> 
+                    <label class="form_label" style="color: var(--blue-color);" for="first_added">First added</label>
+                </div>
+                <div class="filter_block_input_block">
+                    <input class="checkbox" type="checkbox"  id="most_likes" value="" name="most_likes"/> 
+                    <label class="form_label" style="color: var(--blue-color);" for="most_likes">Most likes</label>
+                </div>
+                <div class="filter_block_input_block">
+                    <input class="checkbox" type="checkbox"  id="most_comments" value="" name="most_comments"/> 
+                    <label class="form_label" style="color: var(--blue-color);" for="most_comments">Most comments</label>
+                </div>
+                <div class="filter_block_input_block">
+                    <label class="form_label" style="color: var(--blue-color);" for="author_post">Author post:</label>
+                    <input class="form_input" style="box-shadow: none; border: 2px solid var(--blue-color);" type="text"  id="author_post" value="" name="author_post"/> 
+                </div>
+                <div class="filter_block_input_block">
+                    <label class="form_label" style="color: var(--blue-color);" for="titile_post">Titile post:</label>
+                    <input class="form_input" style="box-shadow: none; border: 2px solid var(--blue-color);" type="text"  id="titile_post" value="" name="titile_post"/> 
+                </div>
+                <button class="button_revers button_search" type="submit">Search</button>
+            </form>
+        </div>
+
+        <div class="posts">
+        <?= $html ?>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <h3 class="footer_my_text">All by myself</h3>
+        </div>
+    </footer>
+</div>
