@@ -1,4 +1,11 @@
-<img class="post_preview_img" src="img/mountains.jpeg" alt="post_preview_img">
+<div class="swiper">
+    <div class="swiper-wrapper">
+        <?= $slides ?>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
 <div class="post_content">
     <h4 class="post_name"><?= htmlspecialchars($post_name) ?></h4>
     <div class="border"></div>
@@ -18,7 +25,7 @@
             <span>&nbsp;</span>
             <p class="like_counter">1</p>
         </div>
-        <a class="button_revers button_class_for_width1024" href="">Read</a>
+        <a class="button_revers button_class_for_width1024" href="posts/post_page/<?= htmlspecialchars($post_id) ?>">Read</a>
     </div>
     <div class="comment_block">
         <p class="comment_text">Comments:&nbsp;</p>

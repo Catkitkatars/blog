@@ -18,7 +18,7 @@ filter_close.addEventListener('click', function() {
 });
 
 
-function render_divs(container, data_object) {
+function render_post(container, data_object) {
     posts_block.innerHTML = '';
     if(Object.keys(data_object).length === 0) {
         error_message = document.querySelector('.error_posts');
@@ -39,7 +39,19 @@ function render_divs(container, data_object) {
             element.classList.add('post');
             element.innerHTML = data_object[key];
     
-            container.appendChild(element);
+            const post = container.appendChild(element);
+            const swiper_container = post.querySelector('.swiper');
+            const swiper = new Swiper(swiper_container, {
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+
         }
     }
 }
@@ -82,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         else
         {
-            return render_divs(posts_block, data.content)
+            return render_post(posts_block, data.content)
         }
     })
     .catch(error => {
@@ -130,7 +142,7 @@ btn_search.addEventListener('click', function(event) {
         }
         else
         {
-            return render_divs(posts_block, data.content)
+            return render_post(posts_block, data.content)
         }
     })
     .catch(error => {

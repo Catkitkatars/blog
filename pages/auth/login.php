@@ -1,20 +1,20 @@
 <?php 
 
-$header_login_button = ob_include(__DIR__ . '/../../templates/auth/header_login-buttons.phtml',[]);
-$header = ob_include(__DIR__ . '/../../templates/header.phtml', ['some_block' => $header_login_button]);
+$header_login_button = ob_include('templates/auth/header_login-buttons.phtml',[]);
+$header = ob_include('templates/header.phtml', ['some_block' => $header_login_button]);
 
-$html = ob_include(__DIR__ . '/../../templates/auth/login.phtml', []);
+$html = ob_include('templates/auth/login.phtml', []);
 
-$container = ob_include(__DIR__ . '/../../templates/auth/auth_container.phtml', ['header' => $header, 'html' => $html]);
+$container = ob_include('templates/auth/auth_container.phtml', ['header' => $header, 'html' => $html]);
 
 
 if (!$_POST) {
-    echo ob_include(__DIR__ . '/../../templates/doctype.phtml', 
+    echo ob_include('templates/doctype.phtml', 
     [
-        'icon_path' => '../../svg/x-icon/travel.svg',
-        'css_path' => '../../css/main.css', 
+        'icon_path' => '/svg/x-icon/travel.svg',
+        'css_path' => '/css/main.css', 
         'container' => $container, 
-        'scripts' => ['../../JS/auth_script/login.js']
+        'scripts' => ['/JS/auth_script/login.js']
     ]);
 }
 else 

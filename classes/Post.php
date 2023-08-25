@@ -1,6 +1,8 @@
 <?php
 namespace classes;
 
+use DateTime;
+
 class Post {
 
     private $connect;
@@ -22,6 +24,15 @@ class Post {
 
         return $posts;
     }
+    public function get_one_post($id) {
+        $id = $this->connect->escapeString(trim($id));
+
+        $sql = "SELECT * FROM `posts` WHERE `id` = $id";
+
+        $selected_post = $this->connect->query($sql)->fetchArray(SQLITE3_ASSOC);
+
+        return $selected_post;
+    }
 
     private function filter_handler($filter) {
         $where = [];
@@ -40,11 +51,11 @@ class Post {
             array_push($where, $sql);
         }
         if($filter["title"] != NULL) {
-            $sql = sprintf(' LOWER(`post_name`) LIKE \'%%%s%%\'', $this->connect->escapeString(trim(strtolower($filter['title']))));
+            $sql = sprintf(' LOWER(`name`) LIKE \'%%%s%%\'', $this->connect->escapeString(trim(strtolower($filter['title']))));
             array_push($where, $sql);
         }
 
-        $sql = "SELECT * FROM `post_table`";
+        $sql = "SELECT * FROM `posts`";
 
         if($where) {
             $sql .= " WHERE" . implode(" AND ", $where);
@@ -56,9 +67,40 @@ class Post {
         return $sql;
     }
 
-    public function add_post($data){
+    public function add_new($datas, $path){
+        $user = $this->connect->escapeString(trim($datas['user']));
+        $title = $this->connect->escapeString(trim($datas['title']));
+        $text = $this->connect->escapeString(trim($datas['text']));
 
+        $date = new DateTime();
+        $now = $date->format('Y-m-d H:i');
+
+        $this->connect->exec('BEGIN');
+
+        $sql = "INSERT INTO `posts` (`name`, `text`, `user_name`, `date_create`) 
+        VALUES ('$title', '$text', '$user', '$now')";
+
+        $this->connect->exec($sql);
+
+        $inserted_id = $this->connect->lastInsertRowID();
+
+        $this->connect->exec('COMMIT');
+
+        $path = $path . $user;
+        $image_handler = new ImageHandler($path);
+        $imgs = '';
+
+        foreach($datas['img'] as $img) {
+            $image_handler->process_and_save($img, $inserted_id);
+        }
+
+        $imgs = implode(', ',$image_handler->img_names);
+
+        $sql_insert_img = "UPDATE posts SET pictures = '$imgs' WHERE id = '$inserted_id'";
+
+        $this->connect->query($sql_insert_img);
     }
+
     public function delete_post() {
 
     }
@@ -69,10 +111,23 @@ class Post {
         $post_array = [];
 
         foreach ($posts as $key => $value) {
+            $imgs = array_reverse(explode(', ',$posts[$key]['pictures']));
+
+            $imgs_html = '';
+
+            foreach($imgs as $img) {
+                $imgs_html .= ob_include('templates/post/slides.phtml', 
+                ['user_name' => $posts[$key]['user_name'],
+                'post_id' => $posts[$key]['id'],
+                'img' => $img]);
+            }
+
+
             $html = ob_include($template_path, 
             ['post_id' => $posts[$key]['id'], 
-            'post_name' =>$posts[$key]['post_name'], 
-            'post_text' => $posts[$key]['post_text'],
+            'post_name' =>$posts[$key]['name'], 
+            'post_text' => $posts[$key]['text'],
+            'slides' => $imgs_html,
             'user_name' => $posts[$key]['user_name'], 
             'date_create' => $posts[$key]['date_create'] 
             ]);

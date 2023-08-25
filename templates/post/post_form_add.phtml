@@ -1,0 +1,28 @@
+
+<form action="">
+    <div class="filter_block_input_block">
+        <label class="form_label" style="color: var(--blue-color);" for="post_title">Titile post:</label>    
+        <input class="form_input" style="box-shadow: none; border: 2px solid var(--blue-color);" type="text"  id="post_title" value="" name="post_title" placeholder="Title your post"/> 
+        <p style="opacity: .3; font-size: 10px; text-align: right;"><span class='post_title_counter'>0</span>/50</p>
+    </div>
+    <div class="filter_block_input_block">
+        <label class="form_label" style="color: var(--blue-color);" for="post_text">Text post:</label>
+        <textarea class="form_input form_textarea" style="box-shadow: none; border: 2px solid var(--blue-color);" type="text"  id="post_text" value="" name="post_text" placeholder="Text your post"></textarea>
+        <p style="opacity: .3; font-size: 10px; text-align: right;"><span class='post_textarea_counter' style="opacity: 1;">0</span>/5000</p>
+    </div>
+    <div class="filter_block_input_block">
+        
+        <label for="image" class="button_revers button_min_size" style=" height: 100%; margin-top: var(--size-min); margin-bottom: var(--size-min); margin-right: auto; margin-left: 0;">Choose pic</label>
+        <p style="opacity: .3; font-size: 10px;">Max size 1pic = 5mb. No more 5 pic</p>
+        <input class='img_input'type="file" id="image" name="image" accept="image/*" multiple>
+        <div class="img_preview"></div>
+        <div class="img_view">
+            <i class="material-symbols-outlined icon_fill view_img_close_btn">close</i>
+        </div>
+    </div>
+    <div class="button_add_block">
+        <button class="button_revers button_min_size button_add" type="button">Add Post</button>
+    </div>
+    
+</form>
+

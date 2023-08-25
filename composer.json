@@ -13,6 +13,5 @@
             "email": "catkitkat.ars@yandex.ru"
         }
     ],
-    "minimum-stability": "stable",
-    "require": {}
+    "minimum-stability": "stable"
 }

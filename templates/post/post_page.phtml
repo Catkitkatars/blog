@@ -1,0 +1,67 @@
+<div class="swiper swiper_post_page">
+    <div class="swiper-wrapper">
+        <?= $imgs ?>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+<div class="post_content post_page_content">
+    <h4 class="post_name">
+        <?= htmlspecialchars($name) ?>
+    </h4>
+    <div class="border"></div>
+    <div class="post_user_name_and_date_block">
+        <div class="post_name_block">
+            <p>from&nbsp;</p>
+            <p class="post_user_name">
+                <?= htmlspecialchars($user_name) ?>
+            </p>
+        </div>
+        <p class="post_date">
+            <?= htmlspecialchars($date_create) ?>
+        </p>
+    </div>
+    <p class="post_short_text">
+        <?= htmlspecialchars($text) ?>
+    </p>
+    <div class="post_interaction">
+        <div class="like_block">
+            <i class="material-symbols-outlined icon_line">favorite</i>
+            <span>&nbsp;</span>
+            <p class="like_counter">1</p>
+        </div>
+        <div class="edit_block">
+            <a class="button_revers" href="<?= htmlspecialchars($id) ?>">Edit</a>
+            <a class="button_revers" href="<?= htmlspecialchars($id) ?>">Delete</a>
+        </div>
+    </div>
+    
+    <div class="border"></div>
+    <h4 class="comments_name">Comments</h4>
+    <div class="comments_create">
+        <form class="comments_create_form" action="">
+            <label for="">Your comment:</label>
+            <textarea class="comments_create_textarea" name="" id="" cols="30" rows="10"></textarea>
+            <button class="button_revers button_send">Send</button>
+        </form>
+    </div>
+    <div class="comments_container">
+        <div class="post_page_comment_block">
+            <h5 class="comment_user_name">
+                Alex123
+            </h5>
+            <p class="comment_text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptas officiis, animi provident velit consectetur dicta natus dolorum 
+            </p>
+        </div>
+        <div class="post_page_comment_block">
+            <h5 class="comment_user_name">
+                Alex123
+            </h5>
+            <p class="comment_text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptas officiis, animi provident velit consectetur dicta natus dolorum quo expedita enim ducimus sint nemo consequatur nam illum? Quibusdam id, enim ipsam dolore minima reiciendis distinctio accusantium obcaecati voluptate illum repudiandae deserunt quas voluptatum fugit fugiat velit eveniet? Voluptatum, exercitationem ab.
+            </p>
+        </div>
+    </div>
+</div>

@@ -4,6 +4,9 @@
     box-sizing: border-box;
     text-decoration: none;
 }
+a {
+    text-decoration:none;
+}
 body {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
@@ -50,7 +53,8 @@ main {
     --white-color: #fff;
     --size-min: 10px;
     --size-med: 20px;
-    --box-shadow: 0 0 0 .25rem rgba(129, 129, 129, 0.25);
+    --box-shadow-inside: 0 0 0 .25rem rgba(129, 129, 129, 0.25);
+    --box-shadow-outside: 0px 10px 20px rgba(0, 0, 0, 0.3);
     --box-shadow-error: 0 0 0 .15rem rgb(219, 22, 22);
     --box-shadow-button: 0 0 0 .25rem rgba(129, 129, 129, 0.25);
     --border-color: #bdbdbd;
@@ -70,7 +74,7 @@ main {
 }
 .add_post_round {
     position: fixed;
-    z-index: 1;
+    z-index: 5;
     bottom: 20px;
     right: 5%;
     width: 50px;
@@ -84,7 +88,7 @@ main {
     border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    box-shadow: 0 0 var(--size-med) rgba(5, 232, 186, 0.8); 
+    box-shadow: 0 0 var(--size-med) rgba(0, 0, 0, 0.8);
 }
 .add_post_round:hover {
     background-color: var(--blue-color);
@@ -200,6 +204,80 @@ main {
 .button_profile {
     margin-right: 10px;
 }
+.button_min_size {
+    width: 110px;
+    height: 55px;  
+    margin-left: auto;
+}
+.button_add_block {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--size-min);
+}
+
+.preview_image {
+    width: 100px;
+    height: 100px;
+    padding: var(--size-min) 0; 
+    border-radius: var(--size-min);
+}
+.preview_action {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100px;
+    /* padding: 0 var(--size-min); */
+}
+
+.img_preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Создаем автоматически заполняемые столбцы */
+}
+.img_preview img {
+    cursor: pointer;
+}
+.preview_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.preview_block i {
+    cursor: pointer;
+    opacity: .5;
+    color: var(--blue-color);
+}
+.img_view {
+    
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+}
+.img_view img {
+    
+    position: relative;
+    max-width: 100%;
+    max-height: 80vh; /* Максимальная высота, ограниченная высотой экрана (80% высоты экрана) */
+    width: auto;
+    height: auto;
+}
+
+.img_view i {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--white-color);
+}
+
+
+
 .filter_and_add {
     margin-top: 50px;
     display: flex;
@@ -212,7 +290,7 @@ main {
 }
 .filter_block {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     top: 2rem;
     left: 2rem;
 
@@ -252,6 +330,7 @@ main {
 .button_search {
     width: 100%;
 }
+
 .post_label {
     
 }
@@ -353,6 +432,7 @@ main {
   /* END SPINER */
 .post {
     display: flex;
+    min-width: 0;
     background-color: var(--white-color);
     color: var(--blue-color);
     padding: var(--size-min);
@@ -360,15 +440,117 @@ main {
     margin-top: var(--size-med);
     margin-bottom: var(--size-med);
     border-radius: var(--size-min);
+    box-shadow: 0 0 var(--size-med) rgba(0, 0, 0, 0.8);
+}
+
+.post_page {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white-color);
+    color: var(--blue-color);
+    padding: var(--size-min);
+
+    margin-top: var(--size-med);
+    margin-bottom: var(--size-med);
+    border-radius: var(--size-min);
+    box-shadow: 0 0 var(--size-med) rgba(0, 0, 0, 0.8);
+}
+.comments_name {
+    font-size: 20px;
+    text-align: center;
+    margin: var(--size-min) 0;
+}
+.comments_create {
+    height: 120px;
+    border-radius: var(--size-min);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
+    padding: var(--size-min);
+}
+.comments_create_form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.comments_container {
+    
+}
+.comments_create_textarea {
+    font-family: Arial, sans-serif; 
+    color: var(--blue-color);
+    width: 100%;
+    height: 100%;
+    resize: none;
+    padding: var(--size-min);
+    border-radius: var(--size-min);
+    border: 2px solid var(--blue-color);
+}
+.button_send {
+    margin-top: var(--size-min);
+    margin-left: auto;
+    width: 100px;
+}
+.swiper_post_page {
+    width: 100%;
+}
+.post_page_content {
+    width: 100%;
+}
+.post_page_comment_block {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: var(--size-med);
+    border-radius: var(--size-min);
+    border: 2px solid var(--blue-color);
+    padding: var(--size-min);
+
+}
+.comment_user_name {
+    color: var(--green-color);
+}
+.comment_text {
+    font-size: 12px;
+}
+.swiper {
+    width: 50%;
+}
+.swiper-pagination-bullet {
+    border: 1px solid #c7c7c7;
+    background-color: #c7c7c7;
+}
+.swiper-button-prev::after{
+    color: var(--border-color);
+}
+.swiper-button-next::after {
+    color: var(--border-color);
+}
+
+.image_slider__image {
+    border-radius: var(--size-min);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    object-fit: cover;
+
 }
 .post_preview_img {
+    width: 100%;
+    height: 100%;
     border-radius: var(--size-min);
-    max-width: 100%;
-    max-height: 100%;
+    object-fit: cover;
 }
 .post_content {
+    width: 50%;
     position: relative;
     padding: var(--size-min);
+}
+.swiper_post_page {
+    width: 100%;
+}
+.post_page_content {
+    width: 100%;
 }
 .post_name_block {
     display: flex;
@@ -405,6 +587,14 @@ main {
     padding-top: var(--size-min);
     padding-bottom: var(--size-min);
 }
+.post_add_block {
+    margin: var(--size-med) 0;
+    padding: var(--size-min);
+    background-color: var(--white-color);
+    border-radius: var(--size-min);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+
+}
 
 /* LIKE DISLIKE ================= */
 
@@ -439,7 +629,8 @@ main {
     display: flex;
     gap: var(--size-min);
     align-items: center;
-    position: absolute;
+    justify-content: flex-end;
+    position: static;
     bottom: 0;
     right: 0;
 }
@@ -471,7 +662,7 @@ main {
     flex-direction: column;
     justify-content: center;
 }
-.auth_header {
+.page_action_name {
     margin: var(--size-med) 0;
     color: var(--white-color);
     text-transform: uppercase;
@@ -511,7 +702,7 @@ main {
     background-color: var(--white-color);
     border-color: var(--border-color);
     outline: 0;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-inside);
 }
 .input_error {
     box-shadow: var(--box-shadow-error);
@@ -579,7 +770,7 @@ main {
     border-color: var(--border-color);
 }
 .checkbox:focus+label::before {
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-inside);
 }
 .checkbox:focus:not(:checked)+label::before {
     border-color: var(--border-color);
@@ -599,13 +790,13 @@ position: absolute;
 z-index: -1;
 opacity: 0;
 }
-/* для элемента label связанного с .custom-radio */
+
 .custom-radio+label {
 display: inline-flex;
 align-items: center;
 user-select: none;
 }
-/* создание в label псевдоэлемента  before со следующими стилями */
+
 .custom-radio+label::before {
 content: '';
 display: inline-block;
@@ -620,30 +811,30 @@ background-repeat: no-repeat;
 background-position: center center;
 background-size: 50% 50%;
 }
-/* стили при наведении курсора на радио */
+
 .custom-radio:not(:disabled):not(:checked)+label:hover::before {
     border-color: var(--border-color);
 }
-/* стили для активной радиокнопки (при нажатии на неё) */
+
 .custom-radio:not(:disabled):active+label::before {
 background-color: #b3d7ff;
 border-color: var(--border-color);
 }
-/* стили для радиокнопки, находящейся в фокусе */
+
 .custom-radio:focus+label::before {
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-inside);
 }
-/* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+
 .custom-radio:focus:not(:checked)+label::before {
     border-color: var(--border-color);
 }
-/* стили для радиокнопки, находящейся в состоянии checked */
+
 .custom-radio:checked+label::before {
 border-color: #0b76ef;
 background-color: #0b76ef;
 background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-5 -5 10 10'%3e%3ccircle r='5' fill='%23fff'/%3e%3c/svg%3e");
 }
-/* стили для радиокнопки, находящейся в состоянии disabled */
+
 .custom-radio:disabled+label::before {
 background-color: #e9ecef;
 }
@@ -653,6 +844,17 @@ background-color: #e9ecef;
     font-size: 12px;
 }
 
+.form_textarea {
+    resize: none;
+    height: 300px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+
+
 /* MEDIA ===========================
 =================================== */
 
@@ -660,6 +862,12 @@ background-color: #e9ecef;
 @media screen and (max-width: 1200px) {
     .post {
         flex-direction: column;
+    }
+    .swiper {
+        width: 100%;
+    }
+    .post_content {
+        width: 100%;
     }
     .edit_block {
         right: 0;
@@ -710,6 +918,15 @@ background-color: #e9ecef;
     }
     .comment_block {
         margin-bottom: var(--size-min);
+    }
+    .button_min_size {
+        width: 100%;
+    }
+    .swiper-button-prev::after{
+        display: none;
+    }
+    .swiper-button-next::after {
+        display: none;
     }
     
 }
