@@ -1,5 +1,5 @@
 <?php
-namespace classes;
+namespace app;
 
 use DateTime;
 
@@ -116,7 +116,7 @@ class Post {
             $imgs_html = '';
 
             foreach($imgs as $img) {
-                $imgs_html .= ob_include('templates/post/slides.phtml', 
+                $imgs_html .= ob_include(__DIR__ . '/../pages/posts/slides.phtml', 
                 ['user_name' => $posts[$key]['user_name'],
                 'post_id' => $posts[$key]['id'],
                 'img' => $img]);

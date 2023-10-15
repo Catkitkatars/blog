@@ -38,7 +38,7 @@ document.getElementById('enter').addEventListener('click', function(event){
         if (response.ok) {
         return response.json();
         } else {
-        throw new Error('Error:' + response.status);
+        throw new Error('Error:' + response.status);В
         }
     })
     .then(data => {

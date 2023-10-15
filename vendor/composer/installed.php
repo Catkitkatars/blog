@@ -3,7 +3,7 @@
         'name' => 'mac/blog',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '3aa2435a12c224806a0b2117cd11e9d3f612cde7',
+        'reference' => '816d315c9cd0950a79cd56505b9b7cd32b64ac06',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'mac/blog' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '3aa2435a12c224806a0b2117cd11e9d3f612cde7',
+            'reference' => '816d315c9cd0950a79cd56505b9b7cd32b64ac06',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

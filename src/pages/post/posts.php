@@ -1,8 +1,7 @@
 <?php
-require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/../init.php';
+require __DIR__ . '/../../../init.php';
+require __DIR__ . '/../../../vendor/autoload.php';
 
-use classes\Post;
 
 function init_filter(array $post):array {
     $filter = [
@@ -14,7 +13,7 @@ function init_filter(array $post):array {
     return $filter;
 }
 
-$posts = new Post($GLOBALS['connect']->connect);
+$posts = new app\Post($GLOBALS['connect']->connect);
 
 $response = array(
     'success' => true,
@@ -23,7 +22,7 @@ $response = array(
 if($_POST) {
     $filter = init_filter($_POST);
 
-    $all_posts = $posts->render('templates/post/post.phtml', $posts->get_all($filter));
+    $all_posts = $posts->render(__DIR__ . '/../posts/post.phtml', $posts->get_all($filter));
 
     $response['success'] = true;
     $response['content'] = $all_posts;
