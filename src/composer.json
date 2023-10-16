@@ -3,9 +3,9 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "app\\": "src/app/"
+            "app\\": "app/"
         },
-        "files": ["src/functions/ob_include.php"]
+        "files": ["functions/ob_include.php"]
     },
     "authors": [
         {

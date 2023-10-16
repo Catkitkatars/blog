@@ -101,8 +101,10 @@ class Post {
         $this->connect->query($sql_insert_img);
     }
 
-    public function delete_post() {
-
+    public function delete_post($path, $id) {
+        $id = $this->connect->escapeString(trim($id));
+        $sql = "DELETE FROM `posts` WHERE `id` = '$id'";
+        
     }
     public function edit_post() {
 

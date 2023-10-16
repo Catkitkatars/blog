@@ -1,8 +1,8 @@
 <?php
 
-use classes\Post;
+use app\Post;
 
-$db = new SQLite3('database/main.db');
+$db = new SQLite3(__DIR__ . '/../../../database/main.db');
 $date = new DateTime();
 
 $now = $date->format('Y-m-d H:i');
@@ -27,7 +27,7 @@ $sql_select_all_post_table = "SELECT * FROM `posts`";
 $sql_select_from_date = "SELECT * FROM `post_table` 
                         ORDER BY `date_create` ASC";
 
-$sql_delete_post_table = "DELETE FROM `posts` WHERE `id` = '2'";
+$sql_delete_post_table = "DELETE FROM `posts` WHERE `id` = '6'";
 
 
 // USERS TABLE ===========================================
@@ -53,11 +53,11 @@ $sql_select_all_from_users_table = "SELECT * FROM `users_table`";
 
 // $db->query($sql_delete_post_table);
 // $db->query($sql_insert_user_in_users_table);
-$result = $db->query($sql_select_all_post_table);
-while($elem = $result->fetchArray(SQLITE3_ASSOC)){
-    var_dump($elem);
-    echo '<br><br>';
-}
+// $result = $db->query($sql_select_all_post_table);
+// while($elem = $result->fetchArray(SQLITE3_ASSOC)){
+//     var_dump($elem);
+//     echo '<br><br>';
+// }
 
 
 

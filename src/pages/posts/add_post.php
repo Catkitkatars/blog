@@ -1,14 +1,14 @@
 <?php 
-use classes\Post; 
+use app\Post; 
 
 if (!$_POST) {
-    $header_login_auth = ob_include('templates/auth/header_login-auth.phtml', ['login' => $_SESSION['login']]);
-    $header = ob_include('templates/header.phtml', ['some_block' => $header_login_auth]);
+    $header_login_auth = ob_include(__DIR__ . '/../auth/header_login-auth.phtml', ['login' => $_SESSION['login']]);
+    $header = ob_include(__DIR__ . '/../index/header.phtml', ['some_block' => $header_login_auth]);
 
-    $html = ob_include('templates/post/post_form_add.phtml', []);
-    $container = ob_include('templates/post/post_container_add.phtml', ['header' => $header, 'html' => $html]);
+    $html = ob_include(__DIR__ . '/post_form_add.phtml', []);
+    $container = ob_include(__DIR__ . '/post_container_add.phtml', ['header' => $header, 'html' => $html]);
 
-    echo ob_include('templates/doctype.phtml', 
+    echo ob_include(__DIR__ . '/../index/doctype.phtml', 
                     ['icon_path' => '/svg/x-icon/travel.svg',
                     'css_path' => '/css/main.css', 
                     'container' => $container, 
@@ -32,10 +32,10 @@ else
         }
     }
 
-    $path = '/../img/users_posts/';
+    $path = '/../../web/img/users_posts/';
     $post = new Post($GLOBALS['connect']->connect);
     $a = $post->add_new($datas, $path);
-
+    // Переход на добавленный пост
 
     header('Content-Type: application/json');
     echo json_encode($a);

@@ -118,7 +118,7 @@ image_input.addEventListener("change", function () {
 
 submit_button.addEventListener('click', function(event) {
     event.preventDefault();
-    const url = '/posts/add_post';
+    const url = '/posts/edit';
 
     const preview_blocks = image_preview.querySelectorAll(".preview_block");
     const uploaded_files = [];
